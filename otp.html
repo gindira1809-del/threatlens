@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberScope | OTP Security Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="otp-page">
+
+    <header class="otp-header">
+        <a href="index.html" class="otp-logo">🛡 CyberScope</a>
+        <a href="labs.html" class="otp-back">← Back to Labs</a>
+    </header>
+
+    <main class="otp-main">
+
+        <section class="otp-intro">
+            <span class="otp-tag">ACCOUNT SECURITY SIMULATION</span>
+            <h1>OTP Scam <span>Investigation Lab</span></h1>
+            <p>Investigate the caller. Recognize social engineering. Protect the account.</p>
+        </section>
+
+        <section class="otp-workspace">
+
+            <!-- LEFT: PHONE MESSAGE -->
+            <div class="otp-phone-area">
+                <div class="otp-phone">
+                    <div class="otp-phone-top">
+                        <span class="otp-avatar">P</span>
+                        <div>
+                            <strong>Bank Security</strong>
+                            <small>Simulated message</small>
+                        </div>
+                        <span class="otp-verified">✓</span>
+                    </div>
+
+                    <div class="otp-date">TODAY · SIMULATION</div>
+
+                    <div class="otp-message">
+                        <small>SECURITY NOTIFICATION</small>
+                        <p>Hello Priya,</p>
+                        Your one-time verification code is:
+                        <strong class="otp-code-display">02306</strong>
+                        <p class="otp-message-warning">Do not share this code with anyone.</p>
+                        <small>This is a fictional training message.</small>
+                    </div>
+
+                    <div class="otp-call-card">
+                        <span class="otp-call-icon">☎</span>
+                        <div>
+                            <strong>Incoming call</strong>
+                            <p>Unknown Number</p>
+                            <small>Caller ID: Bank Support</small>
+                        </div>
+                        <span class="otp-alert">!</span>
+                    </div>
+
+                    <div class="otp-quote">
+                        <strong>Caller says:</strong>
+                        <p>"I'm calling from bank support. Tell me the code so I can secure your account."</p>
+                    </div>
+
+                    <div class="otp-phone-footer">● SIMULATED ENVIRONMENT</div>
+                </div>
+            </div>
+
+            <!-- RIGHT: LOGIN AND OTP -->
+            <div class="otp-panels">
+
+                <section class="otp-panel">
+                    <div class="otp-panel-heading">
+                        <span class="otp-panel-icon">♙</span>
+                        <div>
+                            <h2>Account Login</h2>
+                            <p>Training interface · Dummy details only</p>
+                        </div>
+                    </div>
+
+                    <label for="otp-username">Username</label>
+                    <input id="otp-username" type="text" placeholder="Enter a fictional username" autocomplete="off">
+
+                    <label for="otp-password">Password</label>
+                    <input id="otp-password" type="password" placeholder="Enter any dummy password" autocomplete="off">
+
+                    <button class="otp-login-btn" onclick="otpLogin()">Test Login →</button>
+                    <div id="otp-login-result" class="otp-feedback" aria-live="polite">
+                        No real account is connected.
+                    </div>
+                </section>
+
+                <section class="otp-panel">
+                    <div class="otp-panel-heading">
+                        <span class="otp-panel-icon">▣</span>
+                        <div>
+                            <h2>OTP Verification</h2>
+                            <p>Enter the code shown in the message</p>
+                        </div>
+                    </div>
+
+                    <label for="otp-code-input">Simulated verification code</label>
+                    <input id="otp-code-input" class="otp-code-input" type="text"
+                        inputmode="numeric" maxlength="5" placeholder="Enter 5 digits"
+                        autocomplete="off">
+
+                    <button class="otp-verify-btn" onclick="verifySimulatedOTP()">Verify Code</button>
+
+                    <div id="otp-verify-result" class="otp-feedback" aria-live="polite">
+                        Try the fictional code displayed in the message.
+                    </div>
+
+                    <p class="otp-safety-note">⚠ This is a local simulation. Never enter a real OTP.</p>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- INVESTIGATION -->
+        <section class="otp-section">
+            <div class="otp-section-heading">
+                <span class="otp-section-icon">⌕</span>
+                <div>
+                    <h2>Investigate the Evidence</h2>
+                    <p>Examine each clue before making your decision.</p>
+                </div>
+            </div>
+
+            <div class="otp-evidence-grid">
+                <button class="otp-evidence-btn" onclick="inspectCaller()">
+                    <span>01</span>
+                    <strong>Investigate Caller</strong>
+                    <small>Check the unknown caller</small>
+                </button>
+
+                <button class="otp-evidence-btn" onclick="inspectSMS()">
+                    <span>02</span>
+                    <strong>Examine SMS</strong>
+                    <small>Review the security message</small>
+                </button>
+
+                <button class="otp-evidence-btn" onclick="inspectOTPRequest()">
+                    <span>03</span>
+                    <strong>Analyze OTP Request</strong>
+                    <small>Identify social engineering</small>
+                </button>
+            </div>
+
+            <div id="otp-evidence" class="otp-result">
+                Your investigation findings will appear here.
+            </div>
+        </section>
+
+        <!-- DECISION -->
+        <section class="otp-section">
+            <div class="otp-section-heading">
+                <span class="otp-section-icon">⚖</span>
+                <div>
+                    <h2>Make Your Decision</h2>
+                    <p>The caller is asking you to disclose the verification code. What will you do?</p>
+                </div>
+            </div>
+
+            <div class="otp-decision-grid">
+                <button class="otp-share-btn" onclick="otpAnswer('share')">
+                    <span>✕</span>
+                    <strong>Share the OTP</strong>
+                    <small>Trust the caller</small>
+                </button>
+
+                <button class="otp-refuse-btn" onclick="otpAnswer('refuse')">
+                    <span>✓</span>
+                    <strong>Refuse and Verify</strong>
+                    <small>Keep the code private</small>
+                </button>
+            </div>
+
+            <div id="otp-decision" class="otp-result">
+                Choose an action to see its consequences.
+            </div>
+        </section>
+
+        <!-- REPORT -->
+        <section class="otp-section otp-report-section">
+            <div class="otp-section-heading">
+                <span class="otp-section-icon">▤</span>
+                <div>
+                    <h2>Final Investigation Report</h2>
+                    <p>Review the threat, impact, and recommended response.</p>
+                </div>
+            </div>
+
+            <button class="otp-report-btn" onclick="showOTPConclusion()">
+                Generate Investigation Report →
+            </button>
+
+            <div id="otp-report" class="otp-result">
+                Complete your investigation to reveal the report.
+            </div>
+        </section>
+
+        <footer class="otp-footer">
+            CyberScope · All scenarios are fictional and designed for cybersecurity education.
+        </footer>
+
+    </main>
+
+    <script src="javascript.js"></script>
+</body>
+</html>

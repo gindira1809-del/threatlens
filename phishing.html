@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberScope | Phishing Investigation Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="phish-page">
+
+    <header class="phish-header">
+        <a href="index.html" class="phish-logo">🛡 CyberScope</a>
+        <a href="labs.html" class="phish-back">← Back to Labs</a>
+    </header>
+
+    <main class="phish-main">
+
+        <section class="phish-intro">
+            <span class="phish-tag">EMAIL SECURITY SIMULATION</span>
+            <h1>Phishing Attack <span>Investigation Lab</span></h1>
+            <p>Inspect the email. Find the warning signs. Make the safe decision.</p>
+        </section>
+
+        <section class="phish-workspace">
+
+            <!-- LEFT: EMAIL PREVIEW -->
+            <div class="phish-email-area">
+                <div class="phish-email-window">
+
+                    <div class="phish-window-bar">
+                        <div class="phish-window-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span>MAIL PREVIEW</span>
+                        <span class="phish-demo-label">SIMULATION</span>
+                    </div>
+
+                    <div class="phish-mail-toolbar">
+                        <span>✉</span>
+                        <strong>Inbox</strong>
+                        <span class="phish-mail-count">1 new message</span>
+                    </div>
+
+                    <div class="phish-mail-content">
+                        <div class="phish-sender-row">
+                            <div class="phish-avatar">R</div>
+                            <div class="phish-sender-info">
+                                <strong>Rewards Team</strong>
+                                <span>rewards@example.test</span>
+                            </div>
+                            <span class="phish-time">Now</span>
+                        </div>
+
+                        <div class="phish-subject">
+                            Congratulations! You Won a Prize!
+                        </div>
+
+                        <div class="phish-email-body">
+                            <p>Hello User,</p>
+
+                            <p>You have been selected to receive a special reward!</p>
+
+                            <div class="phish-prize-card">
+                                <span>★</span>
+                                <h2>YOU WON A REWARD!</h2>
+                                <p>Your exclusive prize is waiting.</p>
+                            </div>
+
+                            <p>Click below to claim your prize immediately. Your reward may expire soon!</p>
+
+                            <button class="phish-claim-btn" onclick="inspectLink()">
+                                Claim Your Reward →
+                            </button>
+
+                            <p class="phish-email-small">
+                                This is a fictional email for training. The button does not open a real website.
+                            </p>
+                        </div>
+
+                        <div class="phish-email-warning">
+                            <span>!</span>
+                            <div>
+                                <strong>Something doesn't look right</strong>
+                                <p>Check the sender, message, and urgency before trusting this email.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT: INVESTIGATION SUMMARY -->
+            <div class="phish-investigation-panel">
+
+                <section class="phish-panel">
+                    <div class="phish-panel-heading">
+                        <span class="phish-panel-icon">⌕</span>
+                        <div>
+                            <h2>Mission Brief</h2>
+                            <p>Your inbox contains a suspicious reward email.</p>
+                        </div>
+                    </div>
+
+                    <p class="phish-mission-text">
+                        Investigate the message before clicking its reward button. Your task is to identify signs of phishing and choose the safest response.
+                    </p>
+
+                    <div class="phish-mission-stat">
+                        <span>Investigation steps</span>
+                        <strong>3 clues</strong>
+                    </div>
+
+                    <div class="phish-mission-stat">
+                        <span>Environment</span>
+                        <strong>Safe simulation</strong>
+                    </div>
+                </section>
+
+                <section class="phish-panel">
+                    <div class="phish-panel-heading">
+                        <span class="phish-panel-icon">🔎</span>
+                        <div>
+                            <h2>Investigate the Evidence</h2>
+                            <p>Select each clue to examine it.</p>
+                        </div>
+                    </div>
+
+                    <button class="phish-evidence-btn" onclick="inspectSender()">
+                        <span class="phish-step">01</span>
+                        <span class="phish-evidence-text">
+                            <strong>Inspect Sender</strong>
+                            <small>Check the sender address</small>
+                        </span>
+                        <span class="phish-arrow">›</span>
+                    </button>
+
+                    <button class="phish-evidence-btn" onclick="inspectMessage()">
+                        <span class="phish-step">02</span>
+                        <span class="phish-evidence-text">
+                            <strong>Inspect Message</strong>
+                            <small>Look for urgency and promises</small>
+                        </span>
+                        <span class="phish-arrow">›</span>
+                    </button>
+
+                    <button class="phish-evidence-btn" onclick="inspectLink()">
+                        <span class="phish-step">03</span>
+                        <span class="phish-evidence-text">
+                            <strong>Inspect Reward Button</strong>
+                            <small>Consider where it might lead</small>
+                        </span>
+                        <span class="phish-arrow">›</span>
+                    </button>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- EVIDENCE OUTPUT -->
+        <section class="phish-section">
+            <div class="phish-section-heading">
+                <span class="phish-section-icon">▤</span>
+                <div>
+                    <h2>Investigation Findings</h2>
+                    <p>Your findings and final attack explanation appear here.</p>
+                </div>
+            </div>
+
+            <div id="result" class="phish-result" aria-live="polite">
+                Choose an investigation step to begin.
+            </div>
+
+            <button class="phish-report-btn" onclick="showConclusion()">
+                Reveal the Attack →
+            </button>
+        </section>
+
+        <!-- USER DECISION -->
+        <section class="phish-section">
+            <div class="phish-section-heading">
+                <span class="phish-section-icon">⚖</span>
+                <div>
+                    <h2>Make Your Decision</h2>
+                    <p>What would you do if this email appeared in your inbox?</p>
+                </div>
+            </div>
+
+            <div class="phish-decision-grid">
+                <button class="phish-danger-choice" onclick="phishingAnswer('click')">
+                    <span>✕</span>
+                    <strong>Click and Claim</strong>
+                    <small>Trust the reward email</small>
+                </button>
+
+                <button class="phish-safe-choice" onclick="phishingAnswer('report')">
+                    <span>✓</span>
+                    <strong>Stop and Report</strong>
+                    <small>Avoid the button and report it</small>
+                </button>
+            </div>
+
+            <div id="phishing-decision" class="phish-result" aria-live="polite">
+                Choose an action to see its consequences.
+            </div>
+        </section>
+
+        <footer class="phish-footer">
+            CyberScope · Interactive Cybersecurity Learning Platform
+            <p>All messages and scenarios are fictional. No real links are opened.</p>
+        </footer>
+
+    </main>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
